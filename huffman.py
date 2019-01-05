@@ -69,7 +69,7 @@ def createHuffmanTree(frequency_table):
     
 createHuffmanTree(freq)
   
-#Walking Huffman tree and construct coding scheme recursively
+#Walking Huffman tree and construct coding scheme recursively, returns a dictionary of character with its codes
 def huffmanTreeWalk(node, bit="", code={}):
     if isinstance(node[1].left[1], Node):  #Is the node->left another node?
         huffmanTreeWalk(node[1].left,bit+"0", code) #Yes, continue to go down
