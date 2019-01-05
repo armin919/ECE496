@@ -51,13 +51,10 @@ def ListenMic():
                 output=True,
                 frames_per_buffer=CHUNK)
 
-	print("* recording")
 	frames = []
 	for i in range(0, int(RATE / CHUNK * RECORD_SECONDS)):
     		data = stream.read(CHUNK)  #read audio stream
     		frames.append(data)  #appending all chunks to get the whole picture
-
-	print("* done")
 
 	stream.stop_stream()
 	stream.close()
