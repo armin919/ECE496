@@ -70,15 +70,15 @@ def createHuffmanTree(frequency_table):
 createHuffmanTree(freq)
   
 #Walking Huffman tree and construct coding scheme recursively
-def huffmanTreeWalk(node, prefix="", code={}):
+def huffmanTreeWalk(node, bit="", code={}):
     if isinstance(node[1].left[1], Node):  #Is the node->left another node?
-        huffmanTreeWalk(node[1].left,prefix+"0", code) #Yes, continue to go down
+        huffmanTreeWalk(node[1].left,bit+"0", code) #Yes, continue to go down
     else:
-        code[node[1].left[1]]=prefix+"0" #No, assign (node[1].left[1]) which is a char to the code
+        code[node[1].left[1]]=bit+"0" #No, assign (node[1].left[1]) which is a char to the code
     if isinstance(node[1].right[1],Node):
-        huffmanTreeWalk(node[1].right,prefix+"1", code)
+        huffmanTreeWalk(node[1].right,bit+"1", code)
     else:
-        code[node[1].right[1]]=prefix+"1"
+        code[node[1].right[1]]=bit+"1"
     return(code)
 
 #For making a hashtable for decoding bits into characters
@@ -112,7 +112,7 @@ def Decoder(bitSeq):
         
     
 
-code1 = huffmanTreeWalk(freq[0],prefix="",code={})
+code1 = huffmanTreeWalk(freq[0],bit="",code={})
 decodeDict  = huffmanDecodeDict(code1)
 print(code1)
 print(decodeDict)
